@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import getCurrentUser from './actions/getCurrentUser';
 import getListings, { IListingsParams } from './actions/getListings';
 
@@ -5,6 +7,7 @@ import ClientOnly from './components/ClientOnly';
 import Container from './components/Container';
 import EmptyState from './components/EmptyState';
 import ListingCard from './components/listings/ListingCard';
+import { SafeListing } from './types';
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -37,7 +40,7 @@ const Home = async ({ searchParams }: HomeProps) => {
             gap-8
           '
         >
-          {listings.map((listing) => {
+          {listings.map((listing: SafeListing) => {
             return (
               <ListingCard
                 currentUser={currentUser}
